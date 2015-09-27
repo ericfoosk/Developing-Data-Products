@@ -52,7 +52,7 @@ shinyUI(fluidPage(
                                  "Very Active" = 4,
                                  "Extra Active" = 5), 
                   selected = 1),
-     actionButton("goButton", "Calculate BMI & BMR")
+     submitButton("Calculate BMI & BMR")
   )
 )
 )),
