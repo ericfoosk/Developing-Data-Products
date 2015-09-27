@@ -11,48 +11,50 @@ shinyUI(fluidPage(
   title = "BMI & BMR Calculator",
   fluidRow(
     column(12,
-    h2("BMI & BMR Calculator", align = "center"),      
+    h2("BMI & BMR Calculator", align = "center"),
+    helpText("Please select the Units of Measurement & Gender, then enter Age, Weight and Height, follow by select Activity Level."),
   fluidRow(
     column(4,
-      radioButtons("Units", label = h4("Units of Measurement"),
+      radioButtons("Units", label = h4("Select Units of Measurement"),
                    choices = list("Metric" = 1, "Imperial" = 2), 
                    selected = 1),
-      radioButtons("Gender", label = h4("Gender"),
+      radioButtons("Gender", label = h4("Select Your Gender"),
                    choices = list("Female" = 1, "Male" = 2), 
                    selected = 1)
   ),
   column(4,
      numericInput("Age", 
-                  label = h4("Age (Years)"),
+                  label = h4("Enter Your Age (Years)"),
                   value = 0),         
      conditionalPanel(
        condition = "input.Units == 1",
        numericInput("Weight", 
-                    label = h4("Weight (kg)"),
+                    label = h4("Enter Your Weight (kg)"),
                     value = 0),
        numericInput("Height", 
-                    label = h4("Height (m)"),
+                    label = h4("Enter Your Height (m)"),
                     value = 0)
        ),
      conditionalPanel(
        condition = "input.Units == 2",
        numericInput("Weight", 
-                    label = h4("Weight (lb)"),
+                    label = h4("Enter Your Weight (lb)"),
                     value = 0),
        numericInput("Height", 
-                    label = h4("Height (ft)"),
+                    label = h4("Enter Your Height (ft)"),
                     value = 0)
      )
   ),
   column(4,
-     selectInput("Activity", label = h4("Activity Level"),
+     selectInput("Activity", label = h4("Select Your Activity Level"),
                   choices = list("Sedentary" = 1, 
                                  "Lightly Active" = 2,
                                  "Moderatetely Active" = 3,
                                  "Very Active" = 4,
                                  "Extra Active" = 5), 
                   selected = 1),
-     submitButton("Calculate BMI & BMR")
+     submitButton("Calculate BMI & BMR"),
+     helpText("Click on 'Calculate BMI & BMR' button to view results.")
   )
 )
 )),
